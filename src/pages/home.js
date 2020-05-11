@@ -15,6 +15,25 @@ export default class Home extends React.Component {
         <Link to="/detail">去详情页</Link> */}
         <div style={{ width: 400, height: 400 }}>
           <Nsc_Echarts
+            type={"pie"}
+            cfgData={{
+              data: { level1: 34, level2: 64, level3: 100 },
+              color: ["#2BD50F", "#FED723", "#EF3452"],
+              label: 35,
+              labelunit: "%",
+              isloop: true,
+              showtooltip: true,
+              legendposition: "bottom",
+              legend: [
+                { name: "风险等级1", key: "level1" },
+                { name: "风险等级2", key: "level2" },
+                { name: "风险等级3", key: "level3" },
+              ],
+            }}
+
+            // convertData={false}
+          />
+          {/* <Nsc_Echarts
             type={"bar"}
             cfgData={{
               data: [
@@ -92,9 +111,10 @@ export default class Home extends React.Component {
                 },
               ],
               isXY: true,
+               color={["#2BD50F", "#FED723"]}
             }}
-            color={["#2BD50F", "#FED723"]}
-          />
+           
+          /> */}
         </div>
       </div>
     );

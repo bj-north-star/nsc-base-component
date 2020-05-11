@@ -1,14 +1,32 @@
 import React, { PureComponent } from "react";
 import BarLineChar from "./BarLineChart";
-import { convertBarLineChart } from "./function";
+import PieChart from "./PieChart";
+import { convertBarLineChart, converPieChart } from "./function";
 
 class Nsc_Echarts extends PureComponent {
   render() {
-    const { type, cfgData, color, option, onChartClick, bigSreen } = this.props;
+    const {
+      type,
+      cfgData,
+      option,
+      onChartClick,
+      bigSreen,
+      convertData = true,
+    } = this.props;
     if (type == "bar" || type == "line") {
       if (!option) {
-        let { data, labelKey, lenged, isXY, lineColor, textColor } = cfgData;
-        data = convertBarLineChart(data, labelKey, lenged);
+        let {
+          data,
+          labelKey,
+          legend,
+          isXY,
+          lineColor,
+          textColor,
+          color,
+        } = cfgData;
+        if (convertData) {
+          data = convertBarLineChart(data, labelKey, legend);
+        }
         return (
           <BarLineChar
             data={data}
@@ -18,12 +36,45 @@ class Nsc_Echarts extends PureComponent {
             bigSreen={bigSreen}
             lineColor={lineColor}
             textColor={textColor}
+            onChartClick={onChartClick}
           />
         );
       } else {
         return (
           <BarLineChar defaultoption={option} onChartClick={onChartClick} />
         );
+      }
+    } else if (type == "pie") {
+      if (!option) {
+        let {
+          data,
+          legend,
+          textColor,
+          legendposition,
+          label,
+          labelunit,
+          color,
+          showtooltip,
+          isloop,
+        } = cfgData;
+        if (convertData) {
+          data = converPieChart(data, legend);
+        }
+        return (
+          <PieChart
+            data={data}
+            legend={legendposition}
+            textColor={textColor}
+            label={label}
+            labelunit={labelunit}
+            color={color}
+            showtooltip={showtooltip}
+            isloop={isloop}
+            onChartClick={onChartClick}
+          />
+        );
+      } else {
+        return <PieChart defaultoption={option} onChartClick={onChartClick} />;
       }
     } else {
       return null;

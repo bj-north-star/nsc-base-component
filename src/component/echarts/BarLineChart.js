@@ -45,6 +45,9 @@ class BarLineChart extends PureComponent {
       bigSreen,
       lineColor,
       textColor,
+      tipTextColor,
+      tipBackColor,
+      showDifferent
     } = this.props;
     let vw = window.screen.width;
     let radio = vw / 1920;
@@ -53,6 +56,7 @@ class BarLineChart extends PureComponent {
     let baseBarWidth = 10 * radio;
     let lineStyleColor = "";
     let textStyleColor = "";
+    let tipStyleColor = "";
     if (lineColor) {
       lineStyleColor = lineColor;
     } else {
@@ -71,6 +75,16 @@ class BarLineChart extends PureComponent {
         textStyleColor = "#666666";
       }
     }
+    if (tipTextColor) {
+      tipStyleColor = tipTextColor;
+    } else {
+      if (bigSreen) {
+        tipStyleColor = "#02D0E7";
+      } else {
+        tipStyleColor = "#fff";
+      }
+    }
+
     let option = {};
     if (defaultoption) {
       option = defaultoption;
@@ -97,14 +111,30 @@ class BarLineChart extends PureComponent {
           };
           series.push(serie);
         }
+        if (series.length == 0) {
+          if (showDifferent) {
+            let itemStyle = {
+              normal: {
+                color: function (params) {
+                  var colorList = color;
+                  return colorList[params.dataIndex];
+                },
+              },
+            };
+            series[0].itemStyle = itemStyle;
+          }
+        }
         option = {
           tooltip: {
             trigger: "axis",
             axisPointer: {
               type: "shadow",
             },
+            textStyle: {
+              color: textStyleColor,
+              fontSize: 14 * radio,
+            },
           },
-
           legend: {
             data: legend,
             right: 20 * radio,
@@ -177,6 +207,9 @@ class BarLineChart extends PureComponent {
           option.color = color;
         } else {
           option.color = ["#2BD50F", "#1663B4", "#FED723"];
+        }
+        if (tipBackColor) {
+          option.tooltip.backgroundColor = tipBackCorlor;
         }
         if (isXY) {
           let yxAxis = option.xAxis;
