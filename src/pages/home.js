@@ -5,16 +5,14 @@
  */
 import React from "react";
 import { Link } from "react-router-dom";
-import Nsc_Echarts from "../component/echarts/index";
+import NscPieChart from "../component/echarts/index";
 export default class Home extends React.Component {
   render() {
     return (
       <div style={{ width: "100%", height: "100%" }}>
-        {/* <h1>这是首页</h1>
-
-        <Link to="/detail">去详情页</Link> */}
         <div style={{ width: 400, height: 400 }}>
-          <Nsc_Echarts
+          <h1>home page</h1>
+          {/* <NscPieChart
             type={"pie"}
             cfgData={{
               data: { level1: 34, level2: 64, level3: 100 },
@@ -32,8 +30,8 @@ export default class Home extends React.Component {
             }}
 
             // convertData={false}
-          />
-          {/* <Nsc_Echarts
+          /> */}
+          {/* <NscPieChart
             type={"bar"}
             cfgData={{
               data: [

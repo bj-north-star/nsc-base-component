@@ -3,7 +3,7 @@ import BarLineChar from "./BarLineChart";
 import PieChart from "./PieChart";
 import { convertBarLineChart, converPieChart } from "./function";
 
-class Nsc_Echarts extends PureComponent {
+class Pie extends PureComponent {
   render() {
     const {
       type,
@@ -82,4 +82,4 @@ class Nsc_Echarts extends PureComponent {
   }
 }
 
-export default Nsc_Echarts;
+export default Pie;
