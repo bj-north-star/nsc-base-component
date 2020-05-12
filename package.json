@@ -1,7 +1,7 @@
 {
-  "name": "Nsc_Web_Component",
-  "version": "0.0.0",
-  "description": "前端组件库",
+  "name": "@nsc/component",
+  "version": "1.0.0",
+  "description": "洛斯达前端组件库",
   "main": "lib/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --open",
@@ -12,8 +12,8 @@
     "webpack",
     "npm"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "nsc",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",

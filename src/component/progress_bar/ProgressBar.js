@@ -9,7 +9,7 @@ import styles from "./ProgressBar.less";
 class ProgressBar extends Component {
   render() {
     const { value, label, options, defaultOptions } = this.props;
-    const componentOptions = Object.assign(defaultOptions, options);
+    const componentOptions = Object.assign({}, defaultOptions, options);
     const {
       bgColor,
       barColor,

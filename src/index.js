@@ -1,4 +1,5 @@
 import Test from "./component/Test";
-import Nsc_Echarts from "./component/echarts/index";
-
-export { Test, Nsc_Echarts };
+import Pie from "./component/echarts/index";
+import ProgressBar from "./component/progress_bar/ProgressBar";
+import Schedule from "./component/schedule";
+export { Test, Pie, ProgressBar, Schedule };

@@ -19,7 +19,7 @@ module.exports = {
     path: path.join(__dirname, "./lib"),
     filename: "index.js",
     libraryTarget: "umd", //发布组件专用
-    library: "ReactCmp",
+    library: "nsccomp",
   },
 
   module: {
@@ -93,5 +93,6 @@ module.exports = {
     react: "React",
     "react-dom": "ReactDOM",
     "react-router-dom": "ReactRouterDOM",
+    echarts: "echarts",
   },
 };
