@@ -96,7 +96,7 @@
 .node-progress {
   max-height: 204px;
   overflow: auto;
-  margin-top: 18px;
+  margin-top: 14px;
 }
 .node-progress::-webkit-scrollbar {
   /*滚动条整体样式*/
