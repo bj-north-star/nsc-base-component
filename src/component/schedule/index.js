@@ -1,7 +1,11 @@
 import React from "react";
+
+// import ProgressBar from "../progress_bar/ProgressBar";
+import ProgressBar from "@bj-nsc/progressbar";
+import "@bj-nsc/progressbar/lib/main.css";
 import styles from "./index.less";
-import ProgressBar from "../progress_bar/ProgressBar";
-import Pie from "../echarts";
+// import Pie from "../echarts";
+import Pie from "@bj-nsc/basechart";
 // import demoData from "./data";
 // const data = {
 //   startDay: 228,
@@ -49,7 +53,7 @@ export default class Schedule extends React.PureComponent {
             </div>
           </div>
 
-          <div className={styles["total-progress"]}>
+          <div>
             <ProgressBar
               value={progressValue || 0}
               label="工程总进度"
