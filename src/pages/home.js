@@ -14,7 +14,7 @@ export default class Home extends React.Component {
 
         <Link to="/detail">去详情页</Link> */}
         <div style={{ width: 400, height: 400 }}>
-          <Nsc_Echarts
+          {/* <Nsc_Echarts
             type={"pie"}
             cfgData={{
               data: { level1: 34, level2: 64, level3: 100 },
@@ -32,8 +32,8 @@ export default class Home extends React.Component {
             }}
 
             // convertData={false}
-          />
-          {/* <Nsc_Echarts
+          /> */}
+          <Nsc_Echarts
             type={"bar"}
             cfgData={{
               data: [
@@ -103,7 +103,7 @@ export default class Home extends React.Component {
                 },
               ],
               labelKey: "shortName",
-              lenged: [
+              legend: [
                 {
                   name: "工程数",
                   key: "count",
@@ -111,10 +111,21 @@ export default class Home extends React.Component {
                 },
               ],
               isXY: true,
-               color={["#2BD50F", "#FED723"]}
+              color: [
+                "#2BD50F",
+                "#FED723",
+                "#2BD50F",
+                "#FED723",
+                "#2BD50F",
+                "#FED723",
+                "#2BD50F",
+                "#FED723",
+                "#2BD50F",
+                "#FED723",
+              ],
+              showDifferent: true,
             }}
-           
-          /> */}
+          />
         </div>
       </div>
     );

@@ -25,7 +25,6 @@ export const convertBarLineChart = (data, labelKey, legend) => {
       yData.push(tempObj);
     }
   }
-
   BarChartData.xData = xData;
   BarChartData.yData = yData;
   return BarChartData;

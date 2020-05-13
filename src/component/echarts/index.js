@@ -23,6 +23,9 @@ class Nsc_Echarts extends PureComponent {
           lineColor,
           textColor,
           color,
+          showDifferent,
+          tipTextColor,
+          tipBackColor,
         } = cfgData;
         if (convertData) {
           data = convertBarLineChart(data, labelKey, legend);
@@ -36,7 +39,9 @@ class Nsc_Echarts extends PureComponent {
             bigSreen={bigSreen}
             lineColor={lineColor}
             textColor={textColor}
-            onChartClick={onChartClick}
+            showDifferent={showDifferent}
+            tipBackColor={tipBackColor}
+            tipTextColor={tipTextColor}
           />
         );
       } else {
@@ -55,6 +60,8 @@ class Nsc_Echarts extends PureComponent {
           labelunit,
           color,
           showtooltip,
+          tipBackColor,
+          tipTextColor,
           isloop,
         } = cfgData;
         if (convertData) {
@@ -71,6 +78,8 @@ class Nsc_Echarts extends PureComponent {
             showtooltip={showtooltip}
             isloop={isloop}
             onChartClick={onChartClick}
+            tipBackColor={tipBackColor}
+            tipTextColor={tipTextColor}
           />
         );
       } else {

@@ -111,7 +111,7 @@ class BarLineChart extends PureComponent {
           };
           series.push(serie);
         }
-        if (series.length == 0) {
+        if (series.length == 1) {
           if (showDifferent) {
             let itemStyle = {
               normal: {
@@ -131,7 +131,7 @@ class BarLineChart extends PureComponent {
               type: "shadow",
             },
             textStyle: {
-              color: textStyleColor,
+              color: tipStyleColor,
               fontSize: 14 * radio,
             },
           },

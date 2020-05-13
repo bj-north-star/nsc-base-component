@@ -1,6 +1,6 @@
 {
-  "name": "Nsc_Web_Component",
-  "version": "0.0.0",
+  "name": "@bj-nsc/echart",
+  "version": "0.0.1",
   "description": "前端组件库",
   "main": "lib/index.js",
   "scripts": {
