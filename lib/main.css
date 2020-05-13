@@ -35,7 +35,6 @@
 .schedule-box {
   width: 100%;
   height: 100%;
-  background: rgba(22, 99, 180, 0.9);
   background-size: 100%;
   padding: 0 20px;
   box-sizing: border-box;
@@ -68,7 +67,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 146px;
+  width: 126px;
   height: 180px;
   background-color: #1663b4;
   cursor: pointer;
@@ -77,6 +76,9 @@
   font-size: 16px;
   color: #fff;
   margin-top: 17px;
+}
+.pie-box > div .pie-item {
+  height: 65%;
 }
 .pie-box > .active {
   background-color: #0f4784;
@@ -94,7 +96,7 @@
 .node-progress {
   max-height: 204px;
   overflow: auto;
-  margin-top: 14px;
+  margin-top: 18px;
 }
 .node-progress::-webkit-scrollbar {
   /*滚动条整体样式*/

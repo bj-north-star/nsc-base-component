@@ -1,6 +1,6 @@
 {
   "name": "@bj-nsc/schedule",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "工程进度表，可以查看工程开工竣工时间，总进度和子节点进度等信息",
   "main": "lib/index.js",
   "scripts": {
@@ -41,8 +41,9 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@bj-nsc/basechart": "^1.0.0",
+    "@bj-nsc/basechart": "^1.0.3",
     "@bj-nsc/progressbar": "^1.0.1",
+    "echarts": "^4.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2"

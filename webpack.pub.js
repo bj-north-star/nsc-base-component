@@ -11,13 +11,13 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/component/echart/index.js"),
+  entry: path.resolve(__dirname, "src/component/schedule/index.js"),
   output: {
     path: path.join(__dirname, "./lib"),
     filename: "index.js",
     libraryTarget: "umd", //发布组件专用
   },
-
+  mode: "production",
   module: {
     rules: [
       {

@@ -841,12 +841,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@bj-nsc/basechart@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npm.taobao.org/@bj-nsc/basechart/download/@bj-nsc/basechart-1.0.0.tgz?cache=0&sync_timestamp=1589361391962&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40bj-nsc%2Fbasechart%2Fdownload%2F%40bj-nsc%2Fbasechart-1.0.0.tgz#962aa5a9f620555ec777e1a8ad34458805c38d04"
-  integrity sha1-liqlqfYgVV7Hd+GorTRFiAXDjQQ=
+"@bj-nsc/basechart@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/@bj-nsc/basechart/download/@bj-nsc/basechart-1.0.3.tgz#b4f0b59854e58f97d34f45a382956f02eefbbe8e"
+  integrity sha1-tPC1mFTlj5fTT0WjgpVvAu77vo4=
   dependencies:
-    echarts "^4.7.0"
     react "^16.12.0"
     react-dom "^16.12.0"
     react-router-dom "^5.1.2"
@@ -3109,7 +3108,7 @@ ecc-jsbn@~0.1.1:
 
 echarts@^4.7.0:
   version "4.7.0"
-  resolved "https://registry.npm.taobao.org/echarts/download/echarts-4.7.0.tgz#5b3875a4c2f91e3929425fabab9eace7e4098b3f"
+  resolved "https://registry.npm.taobao.org/echarts/download/echarts-4.7.0.tgz?cache=0&sync_timestamp=1584522755461&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fecharts%2Fdownload%2Fecharts-4.7.0.tgz#5b3875a4c2f91e3929425fabab9eace7e4098b3f"
   integrity sha1-Wzh1pML5HjkpQl+rq56s5+QJiz8=
   dependencies:
     zrender "4.3.0"
@@ -7676,5 +7675,5 @@ yargs@^13.3.2:
 
 zrender@4.3.0:
   version "4.3.0"
-  resolved "https://registry.npm.taobao.org/zrender/download/zrender-4.3.0.tgz#9f056121b20bbae44414d287bf6a119ff7042661"
+  resolved "https://registry.npm.taobao.org/zrender/download/zrender-4.3.0.tgz?cache=0&sync_timestamp=1588759066127&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fzrender%2Fdownload%2Fzrender-4.3.0.tgz#9f056121b20bbae44414d287bf6a119ff7042661"
   integrity sha1-nwVhIbILuuREFNKHv2oRn/cEJmE=

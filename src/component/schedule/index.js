@@ -6,14 +6,14 @@ import "@bj-nsc/progressbar/lib/main.css";
 import styles from "./index.less";
 // import Pie from "../echarts";
 import Pie from "@bj-nsc/basechart";
-// import demoData from "./data";
-// const data = {
-//   startDay: 228,
-//   planEndDate: "2020-09-15",
-//   section_model: 1,
-//   progressValue: 36,
-//   progress: demoData.data.sectionProgressVos[0].progress[0].children,
-// };
+import demoData from "./data";
+const data = {
+  startDay: 228,
+  planEndDate: "2020-09-15",
+  section_model: 1,
+  progressValue: 36,
+  progress: demoData.data.sectionProgressVos[0].progress[0].children,
+};
 
 export default class Schedule extends React.PureComponent {
   constructor(props) {
@@ -28,6 +28,19 @@ export default class Schedule extends React.PureComponent {
     this.setState({ activeNode: node });
   };
 
+  getChartOptions(progressValue) {
+    console.log("this.props.chartOptions", this.props.chartOptions);
+    const cfgData = Object.assign({}, this.props.chartOptions, {
+      data: {
+        level1: progressValue,
+        level2: 100 - progressValue,
+      },
+      label: progressValue,
+    });
+    console.log("cfgData", JSON.stringify(cfgData));
+    return cfgData;
+  }
+
   render() {
     const {
       startDay,
@@ -35,7 +48,10 @@ export default class Schedule extends React.PureComponent {
       progressValue,
       progress = [],
       section_model,
+      progressbarOptions,
+      chartOptions,
     } = this.props;
+
     const activeNode = this.state.activeNode;
     return (
       <div>
@@ -57,7 +73,7 @@ export default class Schedule extends React.PureComponent {
             <ProgressBar
               value={progressValue || 0}
               label="工程总进度"
-              options={{ labelOptions: { marginBottom: 10 } }}
+              options={{ labelOptions: { marginBottom: "0.5208vw" } }}
             />
           </div>
 
@@ -71,25 +87,10 @@ export default class Schedule extends React.PureComponent {
                 }
               >
                 <span className={styles["pie-title"]}>{node.nodeName}</span>
-                <div>
+                <div className={styles["pie-item"]}>
                   <Pie
                     type={"pie"}
-                    cfgData={{
-                      data: {
-                        level1: node.progress,
-                        level2: 100 - node.progress,
-                      },
-                      color: ["#02D0E7", "#065C80"],
-                      label: node.progress,
-                      labelunit: "%",
-                      isloop: true,
-                      legendposition: "bottom",
-                      textColor: "#b8bcc1",
-                      legend: [
-                        { name: "", key: "level1" },
-                        { name: "", key: "level2" },
-                      ],
-                    }}
+                    cfgData={this.getChartOptions(node.progress)}
                   />
                 </div>
                 <span className={styles["text"]}>{node.planEndDate}</span>
@@ -104,9 +105,7 @@ export default class Schedule extends React.PureComponent {
                   <ProgressBar
                     value={item.progress}
                     label={`${item.nodeName} (计划时间: ${item.planEndDate})`}
-                    options={{
-                      height: 8,
-                    }}
+                    options={progressbarOptions}
                   />
                 </div>
               ))}
@@ -118,4 +117,35 @@ export default class Schedule extends React.PureComponent {
   }
 }
 
-Schedule.defaultProps = {};
+Schedule.defaultProps = {
+  ...data,
+  chartOptions: {
+    labelUnit: "%",
+    isLoop: true,
+    legendPosition: "bottom",
+    legend: [
+      { name: "", key: "level1" },
+      { name: "", key: "level2" },
+    ],
+    color: ["#02D0E7", "#065C80"],
+    textColor: "#b8bcc1",
+  },
+  progressbarOptions: {
+    width: 18.75,
+    height: 1,
+    unit: "vw",
+    bgColor: "#04415D",
+    barColor: "#02D0E7",
+    labelOptions: {
+      fontSize: 0.8333,
+      unit: "vw",
+      color: "#B8BBC1",
+      marginBottom: "0.5208vw",
+    },
+    valueOptions: {
+      fontSize: 0.8333,
+      unit: "vw",
+      color: "#B8BBC1",
+    },
+  },
+};
