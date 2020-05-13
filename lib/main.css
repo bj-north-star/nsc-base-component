@@ -1,1 +1,117 @@
-.background{background:red;width:200px;height:20px}
+._2aoIoq4wHLUy7WQW_vFoM- {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+._2aoIoq4wHLUy7WQW_vFoM- ._3WkdHw3FDeEG5fHfxPq7he {
+  width: 96%;
+  font-size: 16px;
+  font-family: PingFang SC;
+  color: #b8bcc1;
+  line-height: 1;
+}
+._33f99iXlWmNttSQaKPQQxn {
+  display: flex;
+  align-items: center;
+}
+._33f99iXlWmNttSQaKPQQxn ._2ldplEOqjthcsgcF-IgjnG {
+  width: 210px;
+  height: 22px;
+  background: rgba(224, 244, 247, 0.2);
+  border: 1px solid #00eaff;
+  box-sizing: border-box;
+}
+._33f99iXlWmNttSQaKPQQxn ._2ldplEOqjthcsgcF-IgjnG .mGpENx_8ddH5f507nzmiL {
+  height: 100%;
+  background: #02d0e7;
+}
+._33f99iXlWmNttSQaKPQQxn ._3gAb2QNj9CryWOoxXNfr5f {
+  color: #b3c7df;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+
+.schedule-box {
+  width: 100%;
+  height: 100%;
+  background: rgba(22, 99, 180, 0.9);
+  background-size: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.kg-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.kg-block .kg-info {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #98abc1;
+}
+.kg-block .kg-num {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffd800;
+  margin: 0 8px;
+}
+.pie-box {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  color: #98abc1;
+}
+.pie-box > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 146px;
+  height: 180px;
+  background-color: #1663b4;
+  cursor: pointer;
+}
+.pie-box > div .pie-title {
+  font-size: 16px;
+  color: #fff;
+  margin-top: 17px;
+}
+.pie-box > .active {
+  background-color: #0f4784;
+}
+.progress-item {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  width: 100%;
+  height: 68px;
+  background: rgba(22, 99, 180, 0.8);
+  margin-bottom: 1px;
+  box-sizing: border-box;
+}
+.node-progress {
+  max-height: 204px;
+  overflow: auto;
+  margin-top: 14px;
+}
+.node-progress::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 6px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+.node-progress::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #02d0e7;
+}
+.node-progress::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: transparent;
+}
+
