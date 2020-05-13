@@ -10,7 +10,8 @@
   },
   "keywords": [
     "webpack",
-    "npm"
+    "npm",
+    "progressbar"
   ],
   "author": "nsc",
   "license": "MIT",
