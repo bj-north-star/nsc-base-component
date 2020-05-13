@@ -38,7 +38,11 @@ class ProgressBar extends Component {
 
     return (
       <div className={styles["progress-bar-box"]}>
-        <div className={styles["progress-label"]} style={labelStyle}>
+        <div
+          className={styles["progress-label"]}
+          style={labelStyle}
+          title={label}
+        >
           {label}
         </div>
         <div className={styles["total"]}>
