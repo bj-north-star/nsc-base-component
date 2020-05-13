@@ -9,12 +9,9 @@ const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // 导入抽取CSS的插件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// 导入压缩CSS的插件
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const HTMLPlugin = require("html-webpack-plugin");
 module.exports = {
-  entry: "./src/index.js",
+  entry: path.resolve(__dirname, "src/component/progress_bar/ProgressBar.js"),
   output: {
     path: path.join(__dirname, "./lib"),
     filename: "index.js",
@@ -87,7 +84,6 @@ module.exports = {
     // 插件
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
-    new OptimizeCssAssetsPlugin(), // 压缩CSS的插件
   ],
   externals: {
     react: "React",

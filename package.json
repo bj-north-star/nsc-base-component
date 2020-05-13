@@ -1,7 +1,7 @@
 {
-  "name": "@nsc/component",
+  "name": "@bj-nsc/progressbar",
   "version": "1.0.0",
-  "description": "洛斯达前端组件库",
+  "description": "工程进度条",
   "main": "lib/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --open",
@@ -29,6 +29,7 @@
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "html-webpack-plugin": "^3.2.0",
     "less-loader": "^6.1.0",
@@ -39,8 +40,6 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "cross-env": "^7.0.0",
-    "echarts": "^4.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2"

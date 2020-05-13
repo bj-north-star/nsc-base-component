@@ -2,14 +2,14 @@ import React from "react";
 import styles from "./index.less";
 import ProgressBar from "../progress_bar/ProgressBar";
 import Pie from "../echarts";
-import demoData from "./data";
-const data = {
-  startDay: 228,
-  planEndDate: "2020-09-15",
-  section_model: 1,
-  progressValue: 36,
-  progress: demoData.data.sectionProgressVos[0].progress[0].children,
-};
+// import demoData from "./data";
+// const data = {
+//   startDay: 228,
+//   planEndDate: "2020-09-15",
+//   section_model: 1,
+//   progressValue: 36,
+//   progress: demoData.data.sectionProgressVos[0].progress[0].children,
+// };
 
 export default class Schedule extends React.PureComponent {
   constructor(props) {
@@ -114,4 +114,4 @@ export default class Schedule extends React.PureComponent {
   }
 }
 
-Schedule.defaultProps = data;
+Schedule.defaultProps = {};
