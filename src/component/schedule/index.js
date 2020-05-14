@@ -7,6 +7,7 @@ import styles from "./index.less";
 // import Pie from "../echarts";
 import Pie from "@bj-nsc/basechart";
 import demoData from "./data";
+import cls from "classnames";
 const data = {
   startDay: 228,
   planEndDate: "2020-09-15",
@@ -50,6 +51,7 @@ export default class Schedule extends React.PureComponent {
       section_model,
       progressbarOptions,
       chartOptions,
+      progressItemClass,
     } = this.props;
 
     const activeNode = this.state.activeNode;
@@ -101,7 +103,13 @@ export default class Schedule extends React.PureComponent {
           {section_model == 1 && activeNode.children && (
             <div className={styles["node-progress"]}>
               {activeNode.children.map((item) => (
-                <div className={styles["progress-item"]} key={item.id}>
+                <div
+                  className={
+                    (styles["progress-item"],
+                    cls({ [progressItemClass]: progressItemClass }))
+                  }
+                  key={item.id}
+                >
                   <ProgressBar
                     value={item.progress}
                     label={`${item.nodeName} (计划时间: ${item.planEndDate})`}
@@ -148,4 +156,5 @@ Schedule.defaultProps = {
       color: "#B8BBC1",
     },
   },
+  progressItemClass: "",
 };
