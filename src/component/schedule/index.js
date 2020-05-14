@@ -50,8 +50,9 @@ export default class Schedule extends React.PureComponent {
       progress = [],
       section_model,
       progressbarOptions,
-      chartOptions,
       progressItemClass,
+      pieItemClass,
+      activePieClass,
     } = this.props;
 
     const activeNode = this.state.activeNode;
@@ -84,9 +85,12 @@ export default class Schedule extends React.PureComponent {
               <div
                 onClick={this.handlePieChange.bind(this, node)}
                 key={node.id}
-                className={
-                  activeNode.nodeName === node.nodeName ? styles["active"] : ""
-                }
+                className={cls(styles["schedule-pie-item"], {
+                  [styles["schedule-pie-active"]]:
+                    activeNode.nodeName === node.nodeName,
+                  [pieItemClass]: pieItemClass,
+                  [activePieClass]: activePieClass,
+                })}
               >
                 <span className={styles["pie-title"]}>{node.nodeName}</span>
                 <div className={styles["pie-item"]}>
@@ -104,10 +108,9 @@ export default class Schedule extends React.PureComponent {
             <div className={styles["node-progress"]}>
               {activeNode.children.map((item) => (
                 <div
-                  className={
-                    (styles["progress-item"],
-                    cls({ [progressItemClass]: progressItemClass }))
-                  }
+                  className={cls(styles["progress-item"], {
+                    [progressItemClass]: progressItemClass,
+                  })}
                   key={item.id}
                 >
                   <ProgressBar

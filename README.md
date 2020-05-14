@@ -55,3 +55,9 @@ import "@bj-nsc/schedule/lib/main.css";
 - `section_model` 1 代表工程模式；2 代表标段模式，工程模式下才显示子节点
 
 - `progress` 工程节点数据
+
+- `progressItemClass` 工程列表项 class
+
+- `pieItemClass` 节点项 class
+
+- `activePieClass` 选中节点项 class

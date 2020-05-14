@@ -37,28 +37,28 @@
   margin-top: 15px;
   // padding: 0 28px;
   color: @greyColor;
-  & > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 136px;
-    height: 180px;
-    // background-color: #1663b4;
-    background-color: rgba(15, 71, 132, 0.2);
-    cursor: pointer;
-    .pie-title {
-      font-size: 16px;
-      color: #fff;
-      margin-top: 17px;
-      // margin-bottom: 17px;
-    }
-    .pie-item {
-      height: 57%;
-    }
+}
+
+.schedule-pie-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 136px;
+  height: 180px;
+  background-color: rgba(15, 71, 132, 0.2);
+  cursor: pointer;
+  .pie-title {
+    font-size: 16px;
+    color: #fff;
+    margin-top: 17px;
   }
-  & > .active {
-    background-color: rgba(22, 99, 180, 0.6);
+  .pie-item {
+    height: 57%;
   }
+}
+
+.schedule-pie-active {
+  background-color: rgba(22, 99, 180, 0.6);
 }
 
 .progress-item {
