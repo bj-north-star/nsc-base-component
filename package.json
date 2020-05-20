@@ -1,6 +1,6 @@
 {
-  "name": "@bj-nsc/schedule",
-  "version": "1.0.8",
+  "name": "@bj-nsc/basechart",
+  "version": "1.0.6",
   "description": "工程进度表，可以查看工程开工竣工时间，总进度和子节点进度等信息",
   "main": "lib/index.js",
   "scripts": {
