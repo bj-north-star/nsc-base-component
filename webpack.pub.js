@@ -85,7 +85,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
   ],
   externals: {
-    react: "React",
+    react: "react",
     "react-dom": "ReactDOM",
     "react-router-dom": "ReactRouterDOM",
     echarts: "echarts",
