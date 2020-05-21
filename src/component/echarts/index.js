@@ -26,6 +26,7 @@ class Pie extends PureComponent {
           showDifferent,
           tipTextColor,
           tipBackColor,
+          legendPosition,
         } = cfgData;
         if (convertData) {
           data = convertBarLineChart(data, labelKey, legend);
@@ -42,6 +43,7 @@ class Pie extends PureComponent {
             showDifferent={showDifferent}
             tipBackColor={tipBackColor}
             tipTextColor={tipTextColor}
+            legend={legendPosition}
           />
         );
       } else {
@@ -55,14 +57,16 @@ class Pie extends PureComponent {
           data,
           legend,
           textColor,
-          legendposition,
+          legendPosition,
           label,
-          labelunit,
+          labelUnit,
           color,
           showtooltip,
           tipBackColor,
           tipTextColor,
-          isloop,
+          isLoop,
+          labelSize,
+          labelColor,
         } = cfgData;
         if (convertData) {
           data = converPieChart(data, legend);
@@ -70,16 +74,18 @@ class Pie extends PureComponent {
         return (
           <PieChart
             data={data}
-            legend={legendposition}
+            legend={legendPosition}
             textColor={textColor}
             label={label}
-            labelunit={labelunit}
+            labelUnit={labelUnit}
             color={color}
             showtooltip={showtooltip}
-            isloop={isloop}
+            isLoop={isLoop}
             onChartClick={onChartClick}
             tipBackColor={tipBackColor}
             tipTextColor={tipTextColor}
+            labelSize={labelSize}
+            labelColor={labelColor}
           />
         );
       } else {

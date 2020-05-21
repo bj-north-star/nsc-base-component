@@ -41,7 +41,6 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@bj-nsc/progressbar": "^1.0.3",
     "classnames": "^2.2.6",
     "echarts": "^4.7.0",
     "react": "^16.12.0",

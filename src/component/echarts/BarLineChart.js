@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import echarts from "echarts";
 
-class BarLineChart extends PureComponent {
+class BarLineChart extends Component {
   barlineReactRef = React.createRef();
   componentDidMount() {
     if (!this.myChart) {
@@ -25,14 +25,14 @@ class BarLineChart extends PureComponent {
     window.removeEventListener("resize", this.resize.bind(this));
   }
 
-  //   shouldComponentUpdate(nextProps, nextState) {
-  //     const data = nextProps.data;
-  //     if (JSON.stringify(this.props) === JSON.stringify(nextProps)) {
-  //       return false;
-  //     } else {
-  //       return true;
-  //     }
-  //   }
+  shouldComponentUpdate(nextProps, nextState) {
+    const data = nextProps.data;
+    if (JSON.stringify(this.props) === JSON.stringify(nextProps)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   componentDidUpdate() {
     this.initChart();
   }
@@ -47,13 +47,15 @@ class BarLineChart extends PureComponent {
       textColor,
       tipTextColor,
       tipBackColor,
-      showDifferent
+      showDifferent,
+      legend = "top",
     } = this.props;
     let vw = window.screen.width;
     let radio = vw / 1920;
-    let legend = [];
+    let legendData = [];
     let series = [];
     let baseBarWidth = 10 * radio;
+    let baselineWidth = 1;
     let lineStyleColor = "";
     let textStyleColor = "";
     let tipStyleColor = "";
@@ -92,23 +94,34 @@ class BarLineChart extends PureComponent {
       if (data) {
         const ydata = data.yData;
         for (let i = 0; i < ydata.length; i++) {
-          legend.push(ydata[i].name);
+          legendData.push(ydata[i].name);
           let stack = "";
-          let barWidth = baseBarWidth;
+          let width = "";
+          if (ydata[i].type == "bar") {
+            width = baseBarWidth;
+          } else if (ydata[i].type == "line") {
+            width = baselineWidth;
+          }
+          if (ydata[i].width) {
+            width = ydata[i].width * radio;
+          }
           if (ydata[i].stack) {
             stack = ydata[i].stackIndex;
           }
-          if (ydata[i].barWidth) {
-            barWidth = ydata[i].barWidth * radio;
-          }
+
           let serie = {
             name: ydata[i].name,
             type: ydata[i].type,
             barGap: 0,
-            barWidth: barWidth,
+            // barWidth: barWidth,
             stack: stack,
             data: ydata[i].data,
           };
+          if (ydata[i].type == "bar") {
+            serie.barWidth = width;
+          } else if (ydata[i].type == "line") {
+            serie.lineWith = width;
+          }
           series.push(serie);
         }
         if (series.length == 1) {
@@ -136,7 +149,7 @@ class BarLineChart extends PureComponent {
             },
           },
           legend: {
-            data: legend,
+            data: legendData,
             right: 20 * radio,
             top: 10 * radio,
             itemWidth: 10 * radio,
@@ -220,7 +233,24 @@ class BarLineChart extends PureComponent {
             top: 40 * radio,
             left: 80 * radio,
             right: 30 * radio,
-            bottom: 40 * radio,
+            bottom: 65 * radio,
+          };
+        }
+        if (legend === false) {
+          option.legend = {
+            show: false,
+          };
+        } else if (legend == "bottom") {
+          option.legend = {
+            data: legendData,
+            bottom: 15 * radio,
+            itemWidth: 10 * radio,
+            itemHeight: 6 * radio,
+            itemGap: 20 * radio,
+            textStyle: {
+              color: textStyleColor,
+              fontSize: 14 * radio,
+            },
           };
         }
       }

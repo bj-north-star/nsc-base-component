@@ -4,8 +4,8 @@
  * @Date: 2020-05-21 15:42:02
  */
 import React from "react";
-// import ProgressBar from "../component/progress_bar/ProgressBar";
-import ProgressBar from "@bj-nsc/progressbar";
+import ProgressBar from "../component/progress_bar/ProgressBar";
+// import ProgressBar from "@bj-nsc/progressbar";
 export default function ProgressBarPage() {
   const labelOptions = {
     direction: "row",
