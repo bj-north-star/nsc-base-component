@@ -5,27 +5,24 @@
  */
 import React from "react";
 import { Link } from "react-router-dom";
-import NscPieChart from "../component/echarts/index";
+import Nsc_Echarts from "../component/echarts/index";
 export default class Home extends React.Component {
   render() {
     return (
       <div style={{ width: "100%", height: "100%" }}>
         <div style={{ width: 400, height: 400 }}>
-<<<<<<< HEAD
           {/* <Nsc_Echarts
-=======
-          <h1>home page</h1>
-          {/* <NscPieChart
->>>>>>> 77b0182c62f59ea6d4757b46cdaaa6454cc2aa2b
             type={"pie"}
             cfgData={{
               data: { level1: 34, level2: 64, level3: 100 },
               color: ["#2BD50F", "#FED723", "#EF3452"],
               label: 35,
-              labelunit: "%",
-              isloop: true,
+              labelUnit: "%",
+              isLoop: true,
               showtooltip: true,
-              legendposition: "bottom",
+              legendPosition: "bottom",
+              // labelColor: "#2BD50F",
+              // labelSize: 39,
               legend: [
                 { name: "风险等级1", key: "level1" },
                 { name: "风险等级2", key: "level2" },
@@ -35,11 +32,7 @@ export default class Home extends React.Component {
 
             // convertData={false}
           /> */}
-<<<<<<< HEAD
           <Nsc_Echarts
-=======
-          {/* <NscPieChart
->>>>>>> 77b0182c62f59ea6d4757b46cdaaa6454cc2aa2b
             type={"bar"}
             cfgData={{
               data: [
@@ -130,6 +123,7 @@ export default class Home extends React.Component {
                 "#FED723",
               ],
               showDifferent: true,
+              legendPosition: "bottom",
             }}
           />
         </div>

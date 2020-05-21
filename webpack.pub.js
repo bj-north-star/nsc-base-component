@@ -11,7 +11,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/component/echart/index.js"),
+  entry: path.resolve(__dirname, "src/component/echarts/index.js"),
   output: {
     path: path.join(__dirname, "./lib"),
     filename: "index.js",
@@ -85,7 +85,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
   ],
   externals: {
-    react: "React",
+    react: "react",
     "react-dom": "ReactDOM",
     "react-router-dom": "ReactRouterDOM",
     echarts: "echarts",
