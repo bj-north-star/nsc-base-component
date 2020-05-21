@@ -21,12 +21,13 @@ export const convertBarLineChart = (data, labelKey, legend) => {
       tempObj.type = legend[i].type;
       tempObj.stack = legend[i].stack;
       tempObj.stackIndex = legend[i].stackIndex;
-      tempObj.barWidth = legend[i].barWidth;
+      tempObj.width = legend[i].width;
       yData.push(tempObj);
     }
   }
   BarChartData.xData = xData;
   BarChartData.yData = yData;
+  console.log(BarChartData);
   return BarChartData;
 };
 

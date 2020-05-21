@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import echarts from "echarts";
 
 /**
@@ -8,7 +8,7 @@ flag:是否超出计划
 color:饼图颜色(数组)
 fontColor:中间字体颜色
  */
-class PieChart extends PureComponent {
+class PieChart extends Component {
   pieReactRef = React.createRef();
   componentDidMount() {
     const { onChartClick } = this.props;
@@ -17,13 +17,13 @@ class PieChart extends PureComponent {
     this.myChart.on("click", onChartClick);
     this.initChart();
   }
-  //   shouldComponentUpdate(nextProps, nextState) {
-  //     if (JSON.stringify(this.props) === JSON.stringify(nextProps)) {
-  //       return false;
-  //     } else {
-  //       return true;
-  //     }
-  //   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (JSON.stringify(this.props) === JSON.stringify(nextProps)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   resize() {
     if (this.myChart && this.myChart.resize) {
       this.myChart.resize();
@@ -39,19 +39,23 @@ class PieChart extends PureComponent {
       color,
       data,
       bigSreen,
-      labelunit,
+      labelUnit,
       showtooltip,
-      isloop,
+      isLoop,
       legend,
       defaultoption,
       tipTextColor,
       tipBackColor,
+      labelSize,
+      labelColor,
     } = this.props;
     let vw = window.screen.width;
     let radio = vw / 1920;
     let legendData = [];
     let textStyleColor = "";
     let tipStyleColor = "";
+    let labelFontSize = labelSize ? labelSize : 14;
+    let labelStyleColor = "";
     let option = {};
     if (defaultoption) {
       option = defaultoption;
@@ -66,6 +70,15 @@ class PieChart extends PureComponent {
           textStyleColor = "#02D0E7";
         } else {
           textStyleColor = "#666666";
+        }
+      }
+      if (labelColor) {
+        labelStyleColor = labelColor;
+      } else {
+        if (bigSreen) {
+          labelStyleColor = "#02D0E7";
+        } else {
+          labelStyleColor = "#666666";
         }
       }
       if (tipTextColor) {
@@ -106,7 +119,7 @@ class PieChart extends PureComponent {
           },
         ],
       };
-      if (isloop) {
+      if (isLoop) {
         option.series[0].radius = ["55%", "75%"];
       }
       if (label) {
@@ -115,11 +128,11 @@ class PieChart extends PureComponent {
             show: true,
             position: "center",
             formatter: function () {
-              return label + labelunit;
+              return label + labelUnit;
             },
             textStyle: {
-              fontSize: 14 * radio,
-              color: textStyleColor,
+              fontSize: labelFontSize * radio,
+              color: labelStyleColor,
             },
           },
         };
