@@ -2,7 +2,7 @@
 
 工程进度表，可以查看工程开工竣工时间，总进度和子节点进度等信息
 
-## 安装和使用
+**## 安装和使用**
 
 **npm 安装**
 
@@ -24,7 +24,7 @@ import Chart from "@bj-nsc/basechart";
 <Chart type={"bar"} cfgData={{ data: [{}], color: [] }} />;
 ```
 
-## Props
+**## Props**
 
 属性详细说明:
 

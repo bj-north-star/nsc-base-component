@@ -17,7 +17,7 @@ module.exports = {
     filename: "index.js",
     libraryTarget: "umd", //发布组件专用
   },
-
+  mode: "production",
   module: {
     rules: [
       {
