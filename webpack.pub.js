@@ -11,7 +11,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/component/echarts/index.js"),
+  entry: path.resolve(__dirname, "src/component/progress_bar/ProgressBar.js"),
   output: {
     path: path.join(__dirname, "./lib"),
     filename: "index.js",

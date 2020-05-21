@@ -4,8 +4,8 @@ import React from "react";
 import ProgressBar from "@bj-nsc/progressbar";
 import "@bj-nsc/progressbar/lib/main.css";
 import styles from "./index.less";
-// import Pie from "../echarts";
-import Pie from "@bj-nsc/basechart";
+import Pie from "../echarts";
+// import Pie from "@bj-nsc/basechart";
 import demoData from "./data";
 import cls from "classnames";
 const data = {

@@ -11,6 +11,8 @@ class ProgressBar extends Component {
     const { value, label, options, defaultOptions } = this.props;
     const componentOptions = Object.assign({}, defaultOptions, options);
     const {
+      radius,
+      showLabel,
       bgColor,
       barColor,
       width,
@@ -19,6 +21,7 @@ class ProgressBar extends Component {
       labelOptions,
       valueOptions,
     } = componentOptions;
+
     const { fontSize, color } = labelOptions;
     const valueFontSize = valueOptions.fontSize;
     const valueFontUnit = valueOptions.unit;
@@ -36,15 +39,22 @@ class ProgressBar extends Component {
       color: valueColor,
     };
 
+    const boxStyle =
+      labelStyle.direction === "row"
+        ? { flexDirection: labelStyle.direction, alignItems: "center" }
+        : {};
     return (
-      <div className={styles["progress-bar-box"]}>
-        <div
-          className={styles["progress-label"]}
-          style={labelStyle}
-          title={label}
-        >
-          {label}
-        </div>
+      <div className={styles["progress-bar-box"]} style={boxStyle}>
+        {showLabel && (
+          <div
+            className={styles["progress-label"]}
+            style={labelStyle}
+            title={label}
+          >
+            {label}
+          </div>
+        )}
+
         <div className={styles["total"]}>
           <div
             className={styles["bar_back"]}
@@ -53,6 +63,7 @@ class ProgressBar extends Component {
               width: `${width}${unit}`,
               height: `${height}${unit}`,
               borderColor: bgColor,
+              borderRadius: isNaN(radius) ? radius : `${radius}${unit}`,
             }}
           >
             <div
@@ -71,6 +82,8 @@ ProgressBar.defaultProps = {
   value: 0,
   label: "工程总进度",
   defaultOptions: {
+    radius: 0,
+    showLabel: true,
     width: 360,
     height: 24,
     unit: "px",
