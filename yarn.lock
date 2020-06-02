@@ -841,11 +841,13 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@bj-nsc/progressbar@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.npm.taobao.org/@bj-nsc/progressbar/download/@bj-nsc/progressbar-1.0.3.tgz?cache=0&sync_timestamp=1590052219204&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40bj-nsc%2Fprogressbar%2Fdownload%2F%40bj-nsc%2Fprogressbar-1.0.3.tgz#767aa8164a851268874b9314dc7503f3cb51a9e8"
-  integrity sha1-dnqoFkqFEmiHS5MU3HUD88tRqeg=
+"@bj-nsc/progressbar@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npm.taobao.org/@bj-nsc/progressbar/download/@bj-nsc/progressbar-1.0.4.tgz#4167e1d821693d1794073d047add367dc82764cd"
+  integrity sha1-QWfh2CFpPReUBz0Eet02fcgnZM0=
   dependencies:
+    classnames "^2.2.6"
+    echarts "^4.7.0"
     react "^16.12.0"
     react-dom "^16.12.0"
     react-router-dom "^5.1.2"
@@ -2382,6 +2384,11 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.npm.taobao.org/classnames/download/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha1-Q5Nb/90pHzJtrQogUwmzjQD2UM4=
 
 clean-css@4.2.x:
   version "4.2.3"
@@ -7755,9 +7762,5 @@ yargs@^13.3.2:
 
 zrender@4.3.0:
   version "4.3.0"
-<<<<<<< HEAD
-  resolved "https://registry.npm.taobao.org/zrender/download/zrender-4.3.0.tgz#9f056121b20bbae44414d287bf6a119ff7042661"
-=======
   resolved "https://registry.npm.taobao.org/zrender/download/zrender-4.3.0.tgz?cache=0&sync_timestamp=1588758471315&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fzrender%2Fdownload%2Fzrender-4.3.0.tgz#9f056121b20bbae44414d287bf6a119ff7042661"
->>>>>>> a91dcf8e3a6780fbd9fb004e3ddfd75c1b5b58dd
   integrity sha1-nwVhIbILuuREFNKHv2oRn/cEJmE=

@@ -48,6 +48,7 @@ class BarLineChart extends Component {
       tipTextColor,
       tipBackColor,
       showDifferent,
+      splitLineColor,
       legend = "top",
     } = this.props;
     let vw = window.screen.width;
@@ -59,6 +60,7 @@ class BarLineChart extends Component {
     let lineStyleColor = "";
     let textStyleColor = "";
     let tipStyleColor = "";
+    let splitLineStyleColor = "";
     if (lineColor) {
       lineStyleColor = lineColor;
     } else {
@@ -84,6 +86,16 @@ class BarLineChart extends Component {
         tipStyleColor = "#02D0E7";
       } else {
         tipStyleColor = "#fff";
+      }
+    }
+
+    if (splitLineColor) {
+      splitLineStyleColor = splitLineColor;
+    } else {
+      if (bigSreen) {
+        splitLineStyleColor = "rgba(22, 99, 180, 0.2)";
+      } else {
+        splitLineStyleColor = "#fff";
       }
     }
 
@@ -113,14 +125,15 @@ class BarLineChart extends Component {
             name: ydata[i].name,
             type: ydata[i].type,
             barGap: 0,
-            // barWidth: barWidth,
             stack: stack,
             data: ydata[i].data,
           };
           if (ydata[i].type == "bar") {
             serie.barWidth = width;
           } else if (ydata[i].type == "line") {
-            serie.lineWith = width;
+            serie.lineStyle = {
+              width: width,
+            };
           }
           series.push(serie);
         }
@@ -150,7 +163,6 @@ class BarLineChart extends Component {
           },
           legend: {
             data: legendData,
-            right: 20 * radio,
             top: 10 * radio,
             itemWidth: 10 * radio,
             itemHeight: 6 * radio,
@@ -208,7 +220,7 @@ class BarLineChart extends Component {
               splitLine: {
                 show: true,
                 lineStyle: {
-                  color: lineStyleColor,
+                  color: splitLineStyleColor,
                   width: 1 * radio,
                 },
               },
@@ -241,16 +253,32 @@ class BarLineChart extends Component {
             show: false,
           };
         } else if (legend == "bottom") {
-          option.legend = {
-            data: legendData,
+          let legendoption = option.legend;
+          let newlegend = {
             bottom: 15 * radio,
-            itemWidth: 10 * radio,
-            itemHeight: 6 * radio,
-            itemGap: 20 * radio,
-            textStyle: {
-              color: textStyleColor,
-              fontSize: 14 * radio,
-            },
+            right: 20 * radio,
+          };
+          option.legend = {
+            ...legendoption,
+            newlegend,
+          };
+        } else if (legend == "topcenter") {
+          let legendoption = option.legend;
+          let newlegend = {
+            top: 10 * radio,
+          };
+          option.legend = {
+            ...legendoption,
+            newlegend,
+          };
+        } else if (legend == "bottomcenter") {
+          let legendoption = option.legend;
+          let newlegend = {
+            bottom: 15 * radio,
+          };
+          option.legend = {
+            ...legendoption,
+            newlegend,
           };
         }
       }

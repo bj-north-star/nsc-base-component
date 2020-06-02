@@ -39,15 +39,15 @@ class PieChart extends Component {
       color,
       data,
       bigSreen,
-      labelUnit,
-      showtooltip,
+      showtooltip = true,
       isLoop,
-      legend,
+      legend = "right",
       defaultoption,
       tipTextColor,
       tipBackColor,
       labelSize,
       labelColor,
+      radius,
     } = this.props;
     let vw = window.screen.width;
     let radio = vw / 1920;
@@ -57,6 +57,14 @@ class PieChart extends Component {
     let labelFontSize = labelSize ? labelSize : 14;
     let labelStyleColor = "";
     let option = {};
+    let newRadius;
+    if (radius) {
+      newRadius = radius;
+    } else {
+      if (isLoop) {
+        newRadius = ["55%", "75%"];
+      }
+    }
     if (defaultoption) {
       option = defaultoption;
     } else {
@@ -103,7 +111,7 @@ class PieChart extends Component {
         series: [
           {
             type: "pie",
-            radius: "55%",
+            radius: newRadius,
             center: ["50%", "50%"],
             hoverAnimation: false,
             label: {
@@ -119,16 +127,13 @@ class PieChart extends Component {
           },
         ],
       };
-      if (isLoop) {
-        option.series[0].radius = ["55%", "75%"];
-      }
       if (label) {
         option.series[0].label = {
           normal: {
             show: true,
             position: "center",
             formatter: function () {
-              return label + labelUnit;
+              return label;
             },
             textStyle: {
               fontSize: labelFontSize * radio,
@@ -140,7 +145,7 @@ class PieChart extends Component {
       if (showtooltip) {
         let tooltip = {
           trigger: "item",
-          formatter: "{b}: {c} ({d}%)",
+          formatter: "{b}<br/> {c} ({d}%)",
           textStyle: {
             color: tipStyleColor,
             fontSize: 14 * radio,
@@ -187,7 +192,6 @@ class PieChart extends Component {
         option.legend = legendobj;
       }
     }
-    console.log("option", option);
     this.myChart.clear();
     this.myChart.setOption(option);
   }

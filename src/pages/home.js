@@ -8,122 +8,33 @@ import { Link } from "react-router-dom";
 import Nsc_Echarts from "../component/echarts/index";
 export default class Home extends React.Component {
   render() {
+    const riskDataByDate = [
+      { time: "2020-05-06", level1: 10, level2: 8, level3: 5, level4: 1 },
+      { time: "2020-05-07", level1: 9, level2: 7, level3: 4, level4: 1 },
+      { time: "2020-05-08", level1: 8, level2: 4, level3: 3, level4: 2 },
+      { time: "2020-05-09", level1: 11, level2: 5, level3: 2, level4: 1 },
+      { time: "2020-05-10", level1: 12, level2: 7, level3: 1, level4: 3 },
+      { time: "2020-05-11", level1: 8, level2: 6, level3: 2, level4: 0 },
+      { time: "2020-05-12", level1: 7, level2: 8, level3: 0, level4: 0 },
+    ];
     return (
       <div style={{ width: "100%", height: "100%" }}>
         <div style={{ width: 400, height: 400 }}>
-          {/* <Nsc_Echarts
-            type={"pie"}
-            cfgData={{
-              data: { level1: 34, level2: 64, level3: 100 },
-              color: ["#2BD50F", "#FED723", "#EF3452"],
-              label: 35,
-              labelUnit: "%",
-              isLoop: true,
-              showtooltip: true,
-              legendPosition: "bottom",
-              // labelColor: "#2BD50F",
-              // labelSize: 39,
-              legend: [
-                { name: "风险等级1", key: "level1" },
-                { name: "风险等级2", key: "level2" },
-                { name: "风险等级3", key: "level3" },
-              ],
-            }}
-
-            // convertData={false}
-          /> */}
           <Nsc_Echarts
-            type={"bar"}
+            type={"line"}
             cfgData={{
-              data: [
-                {
-                  shortName: "特高压办",
-                  count: 2,
-                },
-                {
-                  shortName: "张家界公司",
-                  count: 26,
-                },
-                {
-                  shortName: "湘西公司",
-                  count: 17,
-                },
-                {
-                  shortName: "邵阳公司",
-                  count: 36,
-                },
-                {
-                  shortName: "怀化公司",
-                  count: 58,
-                },
-                {
-                  shortName: "永州公司",
-                  count: 35,
-                },
-                {
-                  shortName: "郴州公司",
-                  count: 23,
-                },
-                {
-                  shortName: "益阳公司",
-                  count: 34,
-                },
-                {
-                  shortName: "娄底公司",
-                  count: 11,
-                },
-                {
-                  shortName: "常德公司",
-                  count: 39,
-                },
-                {
-                  shortName: "岳阳公司",
-                  count: 52,
-                },
-                {
-                  shortName: "衡阳公司",
-                  count: 30,
-                },
-                {
-                  shortName: "湘潭公司",
-                  count: 40,
-                },
-                {
-                  shortName: "株洲公司",
-                  count: 19,
-                },
-                {
-                  shortName: "长沙公司",
-                  count: 67,
-                },
-                {
-                  shortName: "建设公司",
-                  count: 104,
-                },
-              ],
-              labelKey: "shortName",
+              data: riskDataByDate,
+              color: ["#2BD50F", "#A0FD1B", "#FDDA1B", "#FD601B"],
+              labelKey: "time",
               legend: [
-                {
-                  name: "工程数",
-                  key: "count",
-                  type: "bar",
-                },
+                { name: "1级", key: "level1", type: "line" },
+                { name: "2级", key: "level2", type: "line" },
+                { name: "3级", key: "level3", type: "line" },
+                { name: "4级", key: "level4", type: "line" },
               ],
-              isXY: true,
-              color: [
-                "#2BD50F",
-                "#FED723",
-                "#2BD50F",
-                "#FED723",
-                "#2BD50F",
-                "#FED723",
-                "#2BD50F",
-                "#FED723",
-                "#2BD50F",
-                "#FED723",
-              ],
-              showDifferent: true,
-              legendPosition: "bottom",
+              // lineColor: "rgba(255,255,255,0.6)",
+              // textColor: "rgba(255,255,255,0.6)",
+              legendPosition: "topcenter",
             }}
           />
         </div>

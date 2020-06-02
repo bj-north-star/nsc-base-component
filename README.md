@@ -43,11 +43,12 @@ import Chart from "@bj-nsc/basechart";
     - `isXY` 是否 XY 轴互换，默认为 false
     - `color` 图形颜色数组
     - `showDifferent` 针对 1 个系列的柱图是否不同柱子显示不同颜色，默认 false
-    - `legendPosition` 系列显示位置（top,bottom）,默认为 top
+    - `legendPosition` 系列显示位置（top,bottom,topcenter,bottomcenter）,默认为 top
     - `lineColor` 坐标轴颜色
     - `textColor` 字体颜色
     - `tipTextColor` 提示字体颜色
     - `tipBackColor` 提示框字体颜色
+    - `splintLineColor` 分割线颜色
 
     data 格式说明
 
@@ -90,6 +91,7 @@ import Chart from "@bj-nsc/basechart";
     - `label` 图形中心显示的标签
     - `labelSize` 标签字体大小
     - `labelColor` 标签字体颜色
+    - `radius` 圆环大小（设置后 isLoop 失效）
 
     data 格式说明
 

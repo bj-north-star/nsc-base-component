@@ -1,7 +1,7 @@
 {
-  "name": "@bj-nsc/progressbar",
-  "version": "1.0.3",
-  "description": "工程进度表，可以查看工程开工竣工时间，总进度和子节点进度等信息",
+  "name": "@bj-nsc/basechart",
+  "version": "1.1.5",
+  "description": "基础图表，包括柱图，线图，饼图",
   "main": "lib/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --open",
@@ -41,7 +41,6 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
     "echarts": "^4.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
