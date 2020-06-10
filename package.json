@@ -10,6 +10,6 @@
   "author": "nsc",
   "license": "MIT",
   "devDependencies": {
-    "@bj-nsc/create-nsc-component": "^1.0.17"
+    "@bj-nsc/create-nsc-component": "^1.0.20"
   }
 }
