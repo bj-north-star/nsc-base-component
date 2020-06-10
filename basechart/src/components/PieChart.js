@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import echarts from "echarts";
 
-/**
-参数说明：
-value:进度值
-flag:是否超出计划
-color:饼图颜色(数组)
-fontColor:中间字体颜色
- */
 class PieChart extends Component {
   pieReactRef = React.createRef();
   componentDidMount() {
@@ -39,15 +32,15 @@ class PieChart extends Component {
       color,
       data,
       bigSreen,
-      labelUnit,
-      showtooltip,
-      isLoop,
-      legend,
+      showtooltip = true,
+      legend = "right",
       defaultoption,
       tipTextColor,
       tipBackColor,
       labelSize,
       labelColor,
+      radius = ["55%", "75%"],
+      center = ["50%", "50%"],
     } = this.props;
     let vw = window.screen.width;
     let radio = vw / 1920;
@@ -103,8 +96,8 @@ class PieChart extends Component {
         series: [
           {
             type: "pie",
-            radius: "55%",
-            center: ["50%", "50%"],
+            radius: radius,
+            center: center,
             hoverAnimation: false,
             label: {
               normal: { show: false },
@@ -119,16 +112,13 @@ class PieChart extends Component {
           },
         ],
       };
-      if (isLoop) {
-        option.series[0].radius = ["55%", "75%"];
-      }
       if (label) {
         option.series[0].label = {
           normal: {
             show: true,
             position: "center",
             formatter: function () {
-              return label + labelUnit;
+              return label;
             },
             textStyle: {
               fontSize: labelFontSize * radio,
@@ -140,7 +130,7 @@ class PieChart extends Component {
       if (showtooltip) {
         let tooltip = {
           trigger: "item",
-          formatter: "{b}: {c} ({d}%)",
+          formatter: "{b}<br/> {c} ({d}%)",
           textStyle: {
             color: tipStyleColor,
             fontSize: 14 * radio,
@@ -172,22 +162,17 @@ class PieChart extends Component {
         if (legend == "right") {
           legendobj.right = 0;
           legendobj.top = "center";
-          option.series[0].center = ["40%", "50%"];
         } else if (legend == "left") {
           legendobj.left = 0;
           legendobj.top = "center";
-          option.series[0].center = ["60%", "50%"];
         } else if (legend == "top") {
           legendobj.top = 0;
-          option.series[0].center = ["50%", "50%"];
         } else if (legend == "bottom") {
           legendobj.bottom = 0;
-          option.series[0].center = ["50%", "50%"];
         }
         option.legend = legendobj;
       }
     }
-    console.log("option", option);
     this.myChart.clear();
     this.myChart.setOption(option);
   }

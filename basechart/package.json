@@ -1,6 +1,6 @@
 {
   "name": "@bj-nsc/basechart",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "基础图表库",
   "main": "lib/index.js",
   "repository": "https://github.com/bj-north-star/nsc-base-component.git",

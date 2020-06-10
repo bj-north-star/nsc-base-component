@@ -3,7 +3,7 @@ import BarLineChar from "./BarLineChart";
 import PieChart from "./PieChart";
 import { convertBarLineChart, converPieChart } from "./function";
 
-class Pie extends PureComponent {
+class Chart extends PureComponent {
   render() {
     const {
       type,
@@ -27,6 +27,7 @@ class Pie extends PureComponent {
           tipTextColor,
           tipBackColor,
           legendPosition,
+          splitLineColor,
         } = cfgData;
         if (convertData) {
           data = convertBarLineChart(data, labelKey, legend);
@@ -44,6 +45,7 @@ class Pie extends PureComponent {
             tipBackColor={tipBackColor}
             tipTextColor={tipTextColor}
             legend={legendPosition}
+            splitLineColor={splitLineColor}
           />
         );
       } else {
@@ -59,14 +61,14 @@ class Pie extends PureComponent {
           textColor,
           legendPosition,
           label,
-          labelUnit,
           color,
           showtooltip,
           tipBackColor,
           tipTextColor,
-          isLoop,
           labelSize,
           labelColor,
+          radius,
+          center,
         } = cfgData;
         if (convertData) {
           data = converPieChart(data, legend);
@@ -77,15 +79,15 @@ class Pie extends PureComponent {
             legend={legendPosition}
             textColor={textColor}
             label={label}
-            labelUnit={labelUnit}
             color={color}
             showtooltip={showtooltip}
-            isLoop={isLoop}
+            center={center}
             onChartClick={onChartClick}
             tipBackColor={tipBackColor}
             tipTextColor={tipTextColor}
             labelSize={labelSize}
             labelColor={labelColor}
+            radius={radius}
           />
         );
       } else {
@@ -97,4 +99,4 @@ class Pie extends PureComponent {
   }
 }
 
-export default Pie;
+export default Chart;
