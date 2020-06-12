@@ -2,7 +2,7 @@
   "name": "depoly-base-component",
   "version": "1.0.0",
   "description": "发布基础组件仓库",
-  "main": "lib/index.js",
+  "private": true,
   "repository": "https://github.com/bj-north-star/nsc-base-component.git",
   "keywords": [
     "depoly-base-component"
