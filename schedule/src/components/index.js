@@ -34,7 +34,7 @@ export default class Schedule extends React.PureComponent {
         level1: progressValue,
         level2: 100 - progressValue,
       },
-      label: progressValue,
+      label: progressValue + "%",
     });
     return cfgData;
   }
@@ -56,7 +56,7 @@ export default class Schedule extends React.PureComponent {
       lineLength,
       tower,
     } = this.props;
-
+    console.log("this.props", this.props);
     const activeNode = this.state.activeNode;
     return (
       <div>
@@ -117,7 +117,7 @@ export default class Schedule extends React.PureComponent {
                     <Pie
                       type={"pie"}
                       cfgData={this.getChartOptions(
-                        progValue === 0 ? 0 : progValue.toFixed(2)
+                        progValue === 0 ? 0 : progValue
                       )}
                     />
                   </div>
