@@ -24,8 +24,13 @@ export default class Schedule extends React.PureComponent {
   }
 
   handlePieChange = (node) => {
-    if (this.props.type === "line") return;
+    // if (this.props.type === "line") return;
+    if (this.state.activeNode.nodeName === node.nodeName) return;
+
     this.setState({ activeNode: node });
+    if (typeof this.props.onPieChange === 'function') {
+      this.props.onPieChange(node)
+    }
   };
 
   getChartOptions(progressValue) {
@@ -56,7 +61,6 @@ export default class Schedule extends React.PureComponent {
       lineLength,
       tower,
     } = this.props;
-    console.log("this.props", this.props);
     const activeNode = this.state.activeNode;
     return (
       <div>
@@ -105,7 +109,7 @@ export default class Schedule extends React.PureComponent {
                   key={node.nodeCode || node.id}
                   className={cls(styles["schedule-pie-item"], {
                     [styles["schedule-pie-active"]]:
-                      type !== "line" && activeNode.nodeName === node.nodeName,
+                      activeNode.nodeName === node.nodeName,
                     [pieItemClass]: pieItemClass,
                     [activePieClass]: activePieClass,
                   })}
@@ -120,6 +124,8 @@ export default class Schedule extends React.PureComponent {
                         progValue === 0 ? 0 : progValue
                       )}
                     />
+                    {type === 'line' && <span className={styles['pie-text']}>{node.completedNumbers}/{node.towerNumbres}基</span>}
+                    
                   </div>
                 </div>
               );
@@ -155,6 +161,7 @@ Schedule.defaultProps = {
   type: "line", // 工程类型，线路或变电
   lineLength: 0, // 线路长度
   tower: 0, // 杆塔数量
+  onPieChange: null, // 饼图点击回调事件
   chartOptions: {
     labelUnit: "%",
     isLoop: true,
