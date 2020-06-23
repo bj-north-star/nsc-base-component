@@ -17,10 +17,18 @@ const data = {
 export default class Schedule extends React.PureComponent {
   constructor(props) {
     super(props);
-    const { progress = [] } = props;
+    const { progress = [], activeNode = {} } = props;
     this.state = {
-      activeNode: progress[0] || {},
+      activeNode,
     };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const nextActiveNode = nextProps.activeNode;
+    if (nextActiveNode && nextActiveNode.nodeName !== prevState.activeNode.nodeName) {
+      return {activeNode: nextProps.activeNode}
+    }
+    return null;
   }
 
   handlePieChange = (node) => {
