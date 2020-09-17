@@ -9,6 +9,9 @@
   ],
   "author": "nsc",
   "license": "MIT",
+  "scripts": {
+    "create": "create-nsc-component"
+  },
   "devDependencies": {
     "@bj-nsc/create-nsc-component": "^1.0.22"
   }
