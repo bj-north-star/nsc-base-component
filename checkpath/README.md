@@ -39,3 +39,4 @@ const data = [
     - longitude 经度
     - latitude 纬度
     - sort 序号
+- level `string | number` 百度地图初始缩放等级, 值 1-19 之间，默认 8
