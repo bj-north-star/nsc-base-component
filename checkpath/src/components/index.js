@@ -14,6 +14,7 @@ export default class CheckPath extends React.Component {
     window.onBMapLoadCallback = undefined;
   }
 
+  // 初始化地图
   initMap() {
     const { data } = this.props;
     if (!Array.isArray(data)) {
@@ -24,6 +25,8 @@ export default class CheckPath extends React.Component {
       return;
     }
 
+    data.sort((a, b) => a.sort - b.sort);
+
     // 百度地图API功能
     this.map = new BMap.Map("checkpath", { minZoom: 5 });
     const map = this.map;
@@ -32,8 +35,10 @@ export default class CheckPath extends React.Component {
     map.enableScrollWheelZoom();
 
     const symbol = new BMap.Symbol(BMap_Symbol_SHAPE_CIRCLE, {
-      strokeWeight: "6",
-      strokeColor: "#fff",
+      scale: 5,
+      strokeWeight: "2",
+      strokeColor: "#18a45b",
+      fillColor: "#fff",
       fillOpacity: 1,
     });
 
@@ -83,7 +88,7 @@ export default class CheckPath extends React.Component {
       div.style.cursor = "pointer";
       div.style.border = "1px solid #ccc";
       div.style.backgroundColor = "#fff";
-      div.style.fontSize = "14px";
+      div.style.fontSize = "13px";
       div.style.padding = "5px 10px";
       // 绑定事件,点击一次放大两级
       div.onclick = function (e) {
@@ -102,6 +107,7 @@ export default class CheckPath extends React.Component {
     map.addControl(myZoomCtrl);
   }
 
+  // 加载百度地图插件
   loadBaiduMap() {
     return new Promise((resolve) => {
       const script = document.createElement("script");

@@ -11,13 +11,13 @@ export default function Index() {
     },
     {
       sort: 3,
-      towerName: "P17",
+      towerName: "P18",
       longitude: 112.300269,
       latitude: 25.424374,
     },
     {
       sort: 2,
-      towerName: "P18",
+      towerName: "P17",
       longitude: 112.828213,
       latitude: 22.468469,
     },
