@@ -1,6 +1,4 @@
 import React from "react";
-import styles from "./index.less";
-
 export default class CheckPath extends React.Component {
   map = null;
   componentDidMount() {
@@ -109,16 +107,18 @@ export default class CheckPath extends React.Component {
 
   // 加载百度地图插件
   loadBaiduMap() {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src =
-        "//api.map.baidu.com/api?v=2.0&ak=Wd0yf00A6pMxTzrlnEomLeau7OG4sVCh&callback=onBMapLoadCallback";
-      document.querySelector("head").appendChild(script);
-    });
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src =
+      "//api.map.baidu.com/api?v=2.0&ak=Wd0yf00A6pMxTzrlnEomLeau7OG4sVCh&callback=onBMapLoadCallback";
+    document.querySelector("head").appendChild(script);
   }
 
   render() {
-    return <div id="checkpath" className={styles["map"]}></div>;
+    const style = {
+      width: "100%",
+      height: "100%",
+    };
+    return <div id="checkpath" style={style}></div>;
   }
 }

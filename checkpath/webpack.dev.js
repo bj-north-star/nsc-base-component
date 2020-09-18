@@ -19,6 +19,13 @@ module.exports = {
   module: {
     rules: [
       {
+        // enforce: 'pre',
+        test: /\.vue$/,
+        include: path.resolve(__dirname, "./src"),
+        exclude: /node_modules/,
+        loader: "vue-loader",
+      },
+      {
         test: /.jsx?$/,
         include: path.resolve(__dirname, "./src"),
         loader: "babel-loader",
@@ -59,7 +66,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".vue"],
   },
   plugins: [
     CleanPlugin,

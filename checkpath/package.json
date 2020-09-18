@@ -1,6 +1,6 @@
 {
   "name": "@bj-nsc/checkpath",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "杆塔路径检测",
   "main": "lib/index.js",
   "repository": "https://github.com/bj-north-star/nsc-base-component.git",
