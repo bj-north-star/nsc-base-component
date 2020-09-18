@@ -14,7 +14,7 @@ export default class CheckPath extends React.Component {
 
   // 初始化地图
   initMap() {
-    const { data } = this.props;
+    const { data, level } = this.props;
     if (!Array.isArray(data)) {
       throw Error("data不是一个数组");
     }
@@ -29,7 +29,8 @@ export default class CheckPath extends React.Component {
     this.map = new BMap.Map("checkpath", { minZoom: 5 });
     const map = this.map;
     const { longitude, latitude } = data[0];
-    map.centerAndZoom(new BMap.Point(longitude, latitude), 8);
+    const zoomLevel = !level || level <= 0 ? 8 : level;
+    map.centerAndZoom(new BMap.Point(longitude, latitude), zoomLevel);
     map.enableScrollWheelZoom();
 
     const symbol = new BMap.Symbol(BMap_Symbol_SHAPE_CIRCLE, {
