@@ -65,10 +65,10 @@ class Chart extends PureComponent {
           showtooltip,
           tipBackColor,
           tipTextColor,
-          isLoop,
           labelSize,
           labelColor,
           radius,
+          center,
         } = cfgData;
         if (convertData) {
           data = converPieChart(data, legend);
@@ -81,7 +81,7 @@ class Chart extends PureComponent {
             label={label}
             color={color}
             showtooltip={showtooltip}
-            isLoop={isLoop}
+            center={center}
             onChartClick={onChartClick}
             tipBackColor={tipBackColor}
             tipTextColor={tipTextColor}

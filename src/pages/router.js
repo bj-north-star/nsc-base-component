@@ -10,6 +10,7 @@ import Detail from "./detail";
 import PieChart from "../pages/pieChart";
 import SchedulePage from "./schedule";
 import ProgressBar from "../pages/progressBar";
+import NscTabsPage from '../pages/tabs';
 const BasicRoute = () => (
   <HashRouter>
     <Switch>
@@ -18,6 +19,7 @@ const BasicRoute = () => (
       <Route exact path="/pieChart" component={PieChart} />
       <Route exact path="/schedule" component={SchedulePage} />
       <Route exact path="/progressbar" component={ProgressBar} />
+      <Route exact path="/tabs" component={NscTabsPage} />
     </Switch>
   </HashRouter>
 );

@@ -4,7 +4,7 @@
  * @Author: rxzhu
  * @Date: 2020-05-13 18:21:23
  * @LastEditors: rxzhu
- * @LastEditTime: 2020-06-02 19:22:22
+ * @LastEditTime: 2020-06-10 14:25:44
  */
 
 import React from "react";
@@ -24,8 +24,9 @@ export default function PieChart() {
           color: ["#2BD50F", "#FD601B", "#1663B4"],
           // textColor: "rgba(255,255,255,0.6)",
           radius: ["40%", "60%"],
+          center: ["40%", "50%"],
           showtooltip: true,
-          legendPosition: false,
+          // legendPosition: false,
         }}
         convertData={false}
       />

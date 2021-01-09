@@ -40,14 +40,14 @@ class PieChart extends Component {
       data,
       bigSreen,
       showtooltip = true,
-      isLoop,
       legend = "right",
       defaultoption,
       tipTextColor,
       tipBackColor,
       labelSize,
       labelColor,
-      radius,
+      radius = ["55%", "75%"],
+      center = ["50%", "50%"],
     } = this.props;
     let vw = window.screen.width;
     let radio = vw / 1920;
@@ -57,14 +57,6 @@ class PieChart extends Component {
     let labelFontSize = labelSize ? labelSize : 14;
     let labelStyleColor = "";
     let option = {};
-    let newRadius;
-    if (radius) {
-      newRadius = radius;
-    } else {
-      if (isLoop) {
-        newRadius = ["55%", "75%"];
-      }
-    }
     if (defaultoption) {
       option = defaultoption;
     } else {
@@ -111,8 +103,8 @@ class PieChart extends Component {
         series: [
           {
             type: "pie",
-            radius: newRadius,
-            center: ["50%", "50%"],
+            radius: radius,
+            center: center,
             hoverAnimation: false,
             label: {
               normal: { show: false },
@@ -177,17 +169,13 @@ class PieChart extends Component {
         if (legend == "right") {
           legendobj.right = 0;
           legendobj.top = "center";
-          option.series[0].center = ["40%", "50%"];
         } else if (legend == "left") {
           legendobj.left = 0;
           legendobj.top = "center";
-          option.series[0].center = ["60%", "50%"];
         } else if (legend == "top") {
           legendobj.top = 0;
-          option.series[0].center = ["50%", "50%"];
         } else if (legend == "bottom") {
           legendobj.bottom = 0;
-          option.series[0].center = ["50%", "50%"];
         }
         option.legend = legendobj;
       }
