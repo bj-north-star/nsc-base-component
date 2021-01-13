@@ -1,3 +1,11 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: rxzhu
+ * @Date: 2021-01-12 14:52:01
+ * @LastEditors: rxzhu
+ * @LastEditTime: 2021-01-13 13:46:54
+ */
 const webpack = require("webpack");
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -16,6 +24,11 @@ module.exports = {
   devServer: {
     contentBase: "./dist",
     hot: true,
+    proxy: {
+      "/api": {
+        target: "http://47.107.187.159",
+      },
+    },
   },
   module: {
     rules: [
@@ -33,18 +46,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          // {
-          //   loader: "css-loader",
-          //   options: {
-          //     importLoaders: 0,
-          //     esModule: true,
-          //     modules: true,
-          //   },
-          // },
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.less$/,

@@ -41,6 +41,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
     "@bj-nsc/functions": "^1.1.6",
+    "@bj-nsc/upload": "^1.0.21",
     "antd": "^4.10.2",
     "babel-plugin-import": "^1.13.3",
     "classnames": "^2.2.6",

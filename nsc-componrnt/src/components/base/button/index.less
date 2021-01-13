@@ -5,15 +5,16 @@
   height: @buttonHeight;
   border-radius: @buttonRadius;
   font-family: @baseFontFamily;
-  background: hsl(216, 83%, 59%);
+  background: @theme-color-default;
   color: #ffffff;
-  border: 1px solid #4286ed;
+  border: 1px solid @theme-color-default;
   cursor: pointer;
   outline: none;
   padding: 0px;
+  font-size: @font-size;
 }
 .button_base:hover {
-  background: hsl(216, 83%, 59%);
+  background: @theme-color-default;
   color: #ffffff;
 }
 .button_delete {
@@ -28,4 +29,5 @@
   cursor: pointer;
   background: transparent;
   outline: none;
+  font-size: @font-size;
 }
