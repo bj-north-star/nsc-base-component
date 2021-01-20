@@ -5,29 +5,48 @@
   height: @buttonHeight;
   border-radius: @buttonRadius;
   font-family: @baseFontFamily;
-  background: @theme-color-default;
-  color: #ffffff;
-  border: 1px solid @theme-color-default;
   cursor: pointer;
   outline: none;
   padding: 0px;
   font-size: @font-size;
 }
-.button_base:hover {
+.default {
   background: @theme-color-default;
   color: #ffffff;
+  border: 1px solid @theme-color-default;
 }
-.button_delete {
-  width: @buttonWidth;
-  height: @buttonHeight;
-  border-radius: @buttonRadius;
-  text-align: center;
-  font-family: @baseFontFamily;
-  line-height: @buttonHeight;
-  color: #ff3f3f;
+.default:hover,
+.default:focus {
+  background: @theme-color-default-hover;
+  border: 1px solid @theme-color-default-hover;
+  color: #ffffff;
+}
+.default[disabled],
+.default:hover[disabled],
+.default:focus[disabled],
+.default:active[disabled] {
+  background: @theme-color-default;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.default:active {
+  background-color: @theme-color-default-press;
+  border: 1px solid @theme-color-default-press;
+  color: #ffffff;
+}
+
+.danger {
+  color: #ffffff;
   border: 1px solid #ff3f3f;
-  cursor: pointer;
-  background: transparent;
-  outline: none;
-  font-size: @font-size;
+  background: #ff3f3f;
+}
+
+.button_base[disabled] {
+  cursor: not-allowed;
+}
+
+button[ant-click-animating-without-extra-node]:after {
+  border: 0 none;
+  opacity: 0;
+  animation: none 0 ease 0 1 normal;
 }

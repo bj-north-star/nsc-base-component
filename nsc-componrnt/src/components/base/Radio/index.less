@@ -1,0 +1,24 @@
+@import "../global.less";
+
+:global {
+  .ant-radio-wrapper:hover .ant-radio,
+  .ant-radio:hover .ant-radio-inner,
+  .ant-radio-input:focus + .ant-radio-inner {
+    border-color: #3372d2;
+  }
+  .ant-radio-checked .ant-radio-inner {
+    border-color: none;
+    background: #3372d2;
+  }
+  .ant-radio-inner::after {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-top: 0;
+    border-left: 0;
+    border-radius: 8px;
+  }
+}

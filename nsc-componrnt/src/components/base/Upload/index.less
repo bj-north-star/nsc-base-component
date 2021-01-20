@@ -1,9 +1,9 @@
 @import "../global.less";
 
 .uploaditem {
-  width: 200px;
+  width: 100%;
+  max-width: 300px;
 }
-
 .uploadprogress {
   background: @theme-color-default;
   height: 2px;
@@ -17,4 +17,11 @@
   margin-right: 8px;
 }
 
+.text {
+  font-size: @font-size;
+  color: @font-color;
+}
 
+.text_error {
+  color: @theme-color-danger;
+}

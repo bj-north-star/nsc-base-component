@@ -4,14 +4,16 @@
  * @Author: rxzhu
  * @Date: 2021-01-13 10:31:41
  * @LastEditors: rxzhu
- * @LastEditTime: 2021-01-13 17:59:19
+ * @LastEditTime: 2021-01-19 10:14:59
  */
 import React, { PureComponent } from "react";
 import OSS from "@bj-nsc/upload";
-import { Progress } from "antd";
 import Nsc_Progress from "../Progress";
+import Nsc_Message from "../Message";
 import Iconfont from "../Iconfont";
 import styles from "./index.less";
+import cls from "classnames";
+import PropTypes from "prop-types";
 
 /**
  * @name:
@@ -21,110 +23,185 @@ import styles from "./index.less";
  * maxSize:允许上传文件大小;
  * url:上传文件地址;
  * busiName、serviceName：上传文件参数;
+ * uploadLine:是否显示上传进度条
  * }
  * @return {file}
  */
 export default class Nsc_Upload extends PureComponent {
   state = { fileList: [] };
   onDelete = (item, index) => {
+    const { onChange } = this.props;
     const { fileList } = this.state;
-    alert(1);
-    console.log("deleteItem", item);
+    //需要调删除函数进行删除
     fileList.splice(index, 1);
-    this.setState({
-      fileList: [...fileList],
-    });
+    this.setState(
+      {
+        fileList: [...fileList],
+      },
+      () => {
+        onChange(this.state);
+      }
+    );
   };
   onUpload = () => {
+    const {
+      accept,
+      serviceName,
+      busiName,
+      aotoUpload = true,
+      onChange,
+      maxSize,
+      url = "/api/file/v1/files/upload",
+      uploadLine = true,
+    } = this.props;
     const input = document.createElement("input");
-    const { accept } = this.props;
     const _this = this;
     input.type = "file";
+    input.accept = accept;
     input.click();
-    input.accept = accept ? accept : null;
     input.onchange = function () {
       const { fileList } = _this.state;
       let file = input.files[0];
-      const client = new OSS();
+      let arr = file.name.split(".");
+      let filetype = arr[arr.length - 1];
+      let newAccept = "";
+      if (accept) {
+        if (accept.indexOf("image/gif") > -1) {
+          newAccept = ".gif";
+        } else if (accept.indexOf("image/jpeg") > -1) {
+          newAccept = ".pjpeg, .jpeg, .jpg, .pjp";
+        } else if (accept.indexOf("image/png") > -1) {
+          newAccept = ".png";
+        } else if (accept.indexOf("image/*") > -1) {
+          newAccept =
+            ".tiff, .jfif, .svg, .svgz, .bmp, .svgz, .webp, .ico, .xbm, .dib, .avif, .gif,.pjpeg, .jpeg, .jpg, .pjp , .png";
+        }
+        if (
+          accept.indexOf(filetype) == -1 &&
+          newAccept.indexOf(filetype) == -1
+        ) {
+          Nsc_Message.error("上传文件类型错误！", 100);
+          return false;
+        }
+      }
+
+      if (maxSize) {
+        if (file.size / 1024 / 1024 >= maxSize) {
+          Nsc_Message.error(`请上传小于或等于${maxSize}M的文件！`);
+          return false;
+        }
+      }
       let obj = {
         file: file,
-        progress: 50,
-        res: null,
-        // error: "error",
+        progress: 0,
+        status: "uploadiong",
       };
-
       let index = fileList.length;
-      fileList[index] = obj;
-      _this.setState({
-        fileList: [...fileList],
-      });
-      // 所有这些配置都是可选的
-      const config = {
-        serviceName: "eic-home-web", //服务名
-        busiName: "hometest", // 业务名
-        url: "/api/file/v1/files/upload", // 文件上传接口地址
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuZWVkQmluZERldmljZSI6ZmFsc2UsInNpZ25pblR5cGUiOiIyMDEiLCJwcm92aWRlciI6ImplcnJ5Y2hpciIsImlzY191c2VyX2lkIjoiQUNBQTczQzMxNkZGMTM5REUwNTAxMUFDMDIwMDU1MkYiLCJ1c2VyX2lkIjoiMTE4NDQ0NzYyMzkzMzY0NDgwMiIsInVzZXJfbmFtZSI6IjEzNzE2MDM2MzYyIiwic2NvcGUiOlsiYWxsIl0sIm5hbWUiOiLpqazlsI_kuLAiLCJtb2JpbGUiOm51bGwsImV4cCI6MTYxMDcwNDk2MiwianRpIjoiODczNzE2NDItNzU4MC00NzdhLTk1NTItNTUyZWJhMjM5NWU4IiwiY2xpZW50X2lkIjoiYmpuc2NfY2RwX3dlYiJ9.ETw7dP9KF1fT6e1mlhak03fl9sF3vzl9U5JJz1yhy2I",
-        },
-        timeout: 0, // 上传超时设置
-        progress: function (value) {
-          obj.progress = value;
-          fileList[index] = obj;
-          _this.setState({
-            fileList: [...fileList],
+      if (aotoUpload) {
+        const client = new OSS();
+        const config = {
+          serviceName: serviceName, //服务名
+          busiName: busiName, // 业务名
+          url: url, // 文件上传接口地址
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+          timeout: 0, // 上传超时设置
+          progress: function (value) {
+            obj.progress = value;
+            obj.status = "uploading";
+            fileList[index] = obj;
+            _this.setState({
+              fileList: [...fileList],
+            });
+          }, // 上传进度回调
+        };
+        client
+          .multipartUpload("file", file, config)
+          .then((res) => {
+            // 上传成功
+            obj.value = 100;
+            obj.res = res;
+            obj.status = "down";
+            fileList[index] = obj;
+            _this.setState(
+              {
+                fileList: [...fileList],
+              },
+              () => {
+                onChange(_this.state);
+              }
+            );
+            Nsc_Message.success("上传成功");
+          })
+          .catch((error) => {
+            // 上传失败
+            Nsc_Message.error("上传失败");
+            obj.error = error;
+            obj.status = "down";
+            fileList[index] = obj;
+            _this.setState(
+              {
+                fileList: [...fileList],
+              },
+              () => {
+                onChange(this.state);
+              }
+            );
           });
-        }, // 上传进度回调
-      };
-      // client
-      //   .multipartUpload("file", file, config)
-      //   .then((res) => {
-      //     // 上传成功
-      //     obj.value = 100;
-      //     obj.res = res;
-      //     fileList[index] = obj;
-      //     _this.setState({
-      //       fileList: [...fileList],
-      //     });
-      //   })
-      //   .catch((error) => {
-      //     // 上传失败
-      //     obj.error = error;
-      //     fileList[index] = obj;
-      //     _this.setState({
-      //       fileList: [...fileList],
-      //     });
-      //   });
+      } else {
+        obj.status = "down";
+        fileList[index] = obj;
+        _this.setState(
+          {
+            fileList: [...fileList],
+          },
+          () => {
+            onChange(_this.state);
+          }
+        );
+      }
     };
   };
   render() {
     const { fileList } = this.state;
+    const { uploadLine } = this.props;
     return (
       <div>
         <div onClick={this.onUpload}>{this.props.children}</div>
-        {fileList.map((item, index) => {
-          return (
-            <div key={index} className={styles["uploaditem"]}>
-              <div>
-                {item.file.name}
-                {/*上传错误或者进度为100显示删除*/}
-                {(item.error || item.progress == 100) && (
-                  <span
-                    className={styles["filedelete"]}
-                    onClick={this.onDelete.bind(this, item, index)}
-                  >
-                    <Iconfont type={"iconshanchu1"} />
-                  </span>
+        {uploadLine &&
+          fileList.map((item, index) => {
+            return (
+              <div key={index} className={styles["uploaditem"]}>
+                <div
+                  className={cls(styles["text"], {
+                    [styles["text_error"]]: item.error,
+                  })}
+                >
+                  {item.file.name}
+                  {/*上传错误或者进度为100显示删除*/}
+                  {item.status == "down" && (
+                    <span
+                      className={styles["filedelete"]}
+                      onClick={this.onDelete.bind(this, item, index)}
+                    >
+                      <Iconfont type={"iconshanchu1"} />
+                    </span>
+                  )}
+                </div>
+                {/* 上传错误不显示进度条或者进度==100不显示进度条*/}
+                {item.status == "uploading" && (
+                  <Nsc_Progress percent={item.progress} strokeWidth={2} />
                 )}
               </div>
-              {/* 上传错误不显示进度条或者进度==100不显示进度条*/}
-              {((item.progress > 0 && item.progress != 100) || item.error) && (
-                <Nsc_Progress percent={item.progress} strokeWidth={2} />
-              )}
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     );
   }
 }
+
+Nsc_Upload.propTypes = {
+  accept: PropTypes.string,
+  maxSize: PropTypes.number,
+};

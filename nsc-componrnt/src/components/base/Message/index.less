@@ -1,0 +1,20 @@
+@import "../global.less";
+
+:global {
+  .ant-message-success .anticon {
+    color: @theme-color-success;
+  }
+  .ant-message-error .anticon {
+    color: @theme-color-danger;
+  }
+  .ant-message-warning .anticon {
+    color: @theme-color-warning;
+  }
+  .ant-message {
+    font-size: @tip-font-size;
+  }
+  .ant-message-info .anticon,
+  .ant-message-loading .anticon {
+    color: @theme-color-default;
+  }
+}

@@ -4,10 +4,17 @@
   .ant-progress-bg {
     background-color: @theme-color-default;
   }
-  .ant-progress-status-exception {
+  .ant-progress-status-exception .ant-progress-bg {
     background-color: @theme-color-danger;
   }
-  .ant-progress-status-success {
+  .ant-progress-status-success .ant-progress-bg {
     background-color: @theme-color-success;
+  }
+
+  .ant-progress-status-success .ant-progress-text {
+    color: @theme-color-success;
+  }
+  .ant-progress-status-exception .ant-progress-text {
+    background-color: @theme-color-danger;
   }
 }
