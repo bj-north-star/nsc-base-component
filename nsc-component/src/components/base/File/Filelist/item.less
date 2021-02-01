@@ -1,0 +1,42 @@
+@import "../../global.less";
+.listItem {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  color: @theme-color-default;
+}
+.text {
+  font-size: @font-size;
+  cursor: pointer;
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.itemicon {
+  // margin-left: 20px;
+  cursor: pointer;
+  float: right;
+  margin-right: 8px;
+}
+
+.checkbox {
+  margin-right: 6px;
+}
+
+.listFlatItem {
+  height: 60px;
+  max-width: 300px;
+  display: flex;
+  border: 1px solid #eeeeee;
+  align-items: center;
+  border-radius: 2px;
+  margin-bottom: 5px;
+  padding: 0 10px;
+  color: @theme-color-default;
+}
+
+.text_error {
+  color: @theme-color-danger;
+}

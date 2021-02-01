@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
+    "@bj-nsc/file": "^1.0.1",
     "@bj-nsc/functions": "^1.1.6",
     "@bj-nsc/upload": "^1.0.21",
     "antd": "^4.10.2",

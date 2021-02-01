@@ -4,20 +4,22 @@
  * @Author: rxzhu
  * @Date: 2021-01-13 10:31:41
  * @LastEditors: rxzhu
- * @LastEditTime: 2021-01-19 10:14:59
+ * @LastEditTime: 2021-01-28 17:17:49
  */
 import React, { PureComponent } from "react";
 import OSS from "@bj-nsc/upload";
-import Nsc_Progress from "../Progress";
-import Nsc_Message from "../Message";
-import Iconfont from "../Iconfont";
+import file from "@bj-nsc/file";
+import Nsc_Progress from "../../Progress";
+import Nsc_Message from "../../Message";
+import Iconfont from "../../Iconfont";
 import styles from "./index.less";
 import cls from "classnames";
 import PropTypes from "prop-types";
 
 /**
- * @name:
- * @param {onChange:上传文件修改事件;
+ * @name:上传组件
+ * @param {
+ * onChange:上传文件修改事件;
  * aotoUpload:是否自动上传至文件服务器，默认true;
  * accept允许上传的文件类型;
  * maxSize:允许上传文件大小;
@@ -27,12 +29,24 @@ import PropTypes from "prop-types";
  * }
  * @return {file}
  */
+
+const { download, remove, preview } = file;
 export default class Nsc_Upload extends PureComponent {
   state = { fileList: [] };
+
   onDelete = (item, index) => {
     const { onChange } = this.props;
     const { fileList } = this.state;
     //需要调删除函数进行删除
+    if (fileList.res) {
+      remove({
+        params: {
+          ids: [item.res.data.id],
+        },
+      }).then((res) => {
+        console.log("remove", res);
+      });
+    }
     fileList.splice(index, 1);
     this.setState(
       {
@@ -42,6 +56,14 @@ export default class Nsc_Upload extends PureComponent {
         onChange(this.state);
       }
     );
+  };
+  download = (item) => {
+    if (item.error) {
+      return;
+    }
+    preview({
+      fileId: item.res.data.id,
+    });
   };
   onUpload = () => {
     const {
@@ -111,9 +133,14 @@ export default class Nsc_Upload extends PureComponent {
             obj.progress = value;
             obj.status = "uploading";
             fileList[index] = obj;
-            _this.setState({
-              fileList: [...fileList],
-            });
+            _this.setState(
+              {
+                fileList: [...fileList],
+              },
+              () => {
+                onChange(_this.state);
+              }
+            );
           }, // 上传进度回调
         };
         client
@@ -137,15 +164,14 @@ export default class Nsc_Upload extends PureComponent {
           .catch((error) => {
             // 上传失败
             Nsc_Message.error("上传失败");
-            obj.error = error;
-            obj.status = "down";
+            obj.status = "error";
             fileList[index] = obj;
             _this.setState(
               {
                 fileList: [...fileList],
               },
               () => {
-                onChange(this.state);
+                onChange(_this.state);
               }
             );
           });
@@ -165,7 +191,7 @@ export default class Nsc_Upload extends PureComponent {
   };
   render() {
     const { fileList } = this.state;
-    const { uploadLine } = this.props;
+    const { uploadLine = false } = this.props;
     return (
       <div>
         <div onClick={this.onUpload}>{this.props.children}</div>
@@ -177,10 +203,11 @@ export default class Nsc_Upload extends PureComponent {
                   className={cls(styles["text"], {
                     [styles["text_error"]]: item.error,
                   })}
+                  onClick={this.download.bind(this, item)}
                 >
                   {item.file.name}
                   {/*上传错误或者进度为100显示删除*/}
-                  {item.status == "down" && (
+                  {uploadLine && item.status == "down" && (
                     <span
                       className={styles["filedelete"]}
                       onClick={this.onDelete.bind(this, item, index)}
@@ -190,7 +217,7 @@ export default class Nsc_Upload extends PureComponent {
                   )}
                 </div>
                 {/* 上传错误不显示进度条或者进度==100不显示进度条*/}
-                {item.status == "uploading" && (
+                {uploadLine && item.status == "uploading" && (
                   <Nsc_Progress percent={item.progress} strokeWidth={2} />
                 )}
               </div>

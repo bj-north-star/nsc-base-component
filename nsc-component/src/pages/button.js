@@ -4,16 +4,19 @@
  * @Author: rxzhu
  * @Date: 2021-01-12 15:34:25
  * @LastEditors: rxzhu
- * @LastEditTime: 2021-01-20 19:28:31
+ * @LastEditTime: 2021-01-28 11:02:20
  */
 import React, { PureComponent } from "react";
 import Button from "../components/base/Button";
-import Upload from "../components/base/Upload";
+import Upload from "../components/base/File/Upload";
 import Radio from "../components/base/Radio";
 import Self from "./Self";
+import FileList from "../components/base/File/Filelist";
+
 export default class ButtonPage extends PureComponent {
   state = {
     active: 1,
+    visible: false,
   };
   onGroupChange(value) {
     console.log("value", value);
@@ -24,12 +27,13 @@ export default class ButtonPage extends PureComponent {
       active: value,
     });
   }
+ 
   render() {
     const props = {
       serviceName: "eic-home-web",
       busiName: "hometest",
       // accept: "image/*",
-      aotoUpload: false,
+      // aotoUpload: false,
       onChange: (e) => {
         alert("onchange");
         console.log(e);
@@ -51,11 +55,12 @@ export default class ButtonPage extends PureComponent {
         <Radio.Group
           onChange={this.onGroupChange2.bind(this)}
           customize={true}
-          active={this.state.active}
+          value={this.state.active}
         >
           <Self value={1}>使用余额支付</Self>
           <Self value={2}>使用微信支付</Self>
         </Radio.Group>
+        <FileList />
       </div>
     );
   }

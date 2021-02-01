@@ -4,7 +4,7 @@
  * @Author: rxzhu
  * @Date: 2021-01-15 15:14:31
  * @LastEditors: rxzhu
- * @LastEditTime: 2021-01-20 19:26:29
+ * @LastEditTime: 2021-01-28 09:27:58
  */
 import React, { Component } from "react";
 import { Radio } from "antd";
@@ -18,7 +18,7 @@ export default class RadioGroup extends Component {
     const { children, customize = false } = this.props;
     if (customize) {
       return children.map((child, index) => {
-        let isActive = this.props.active === child.props.value ? true : false;
+        let isActive = this.props.value === child.props.value ? true : false;
         return React.cloneElement(child, {
           label: child.props.children,
           value: child.props.value,

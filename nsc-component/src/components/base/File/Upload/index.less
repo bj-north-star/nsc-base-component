@@ -1,9 +1,13 @@
-@import "../global.less";
+@import "../../global.less";
 
 .uploaditem {
   width: 100%;
   max-width: 300px;
 }
+
+.uploaditem:hover {
+}
+
 .uploadprogress {
   background: @theme-color-default;
   height: 2px;
@@ -19,7 +23,8 @@
 
 .text {
   font-size: @font-size;
-  color: @font-color;
+  color: @theme-color-default;
+  cursor: pointer;
 }
 
 .text_error {
